@@ -40,6 +40,7 @@ Route::group([
 
     Route::get('/export', [BeerController::class, 'export']);
 
+    
     Route::resource("reports", ExportController::class)
         ->only(["index", "destroy"]);
 });
