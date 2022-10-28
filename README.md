@@ -1,6 +1,7 @@
-#  PUNK API
+###  PUNK API
+<br>
 
-<img src="https://pbs.twimg.com/media/E2Obwn8WUAAutnQ?format=jpg&name=4096x4096" alt="My cool logo"/>
+![alt text](public/tela_sistema.png)
 
 <br>
 
@@ -11,8 +12,6 @@
 ## Instruções
 <br>
 <p>Faça um clone desse projeto.</p>
-
-<p>Crie um banco de dados para o projeto, no arquivo .env informe o nome do banco de dados.</p>
 
 <p>Execute os seguintes comandos para configurações:</p>
 
@@ -27,7 +26,7 @@ sail art migrate:refresh --seed
 Subindo servidor Vite
 
 ```
- npm run -dev
+ npm run dev
 ```
 
 ### Requisitos
