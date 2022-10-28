@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Export;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Inertia\Inertia;
 
 class ExportController extends Controller
 {
@@ -17,6 +18,15 @@ class ExportController extends Controller
     {
        $exports = Export::paginate(15);
 
+       return Inertia::render('Reports',[
+        'exports' => $exports
+       ]);
+    }
+    public function show($export)
+    {
+        $export = Export::find($export);
+
+        return Storage::download($export->file_name);
     }
 
     /**
@@ -25,11 +35,15 @@ class ExportController extends Controller
      * @param  \App\Models\Export  $export
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Export $export)
+    public function destroy($export)
     {
-        Storage::delete($export->file_name);
-        $export->delete();
+        $export = Export::find($export);
+        if($export){
+            Storage::delete($export->file_name);
+            $export->delete();
+        }
 
-        return "deletou";
+        return redirect()->back()
+        ->with('success', 'Seu arquivo foi removido com sucesso!');
     }
 }
